@@ -1,3 +1,3 @@
 #!/bin/bash
-DISK_USAGE=$(df -h | awk '{print $5}' | sed 's/%//g')
+DISK_USAGE=$(df -h)
 echo "disk usage is $DISK_uSAGE "
