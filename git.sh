@@ -1,1 +1,1 @@
-echo "sample echo script"
+echo "sample echo script in git repo"
