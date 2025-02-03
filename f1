@@ -1,5 +1,5 @@
 pipeline{
-    agent (label 'Jenkins_slave_01')
+    agent {label 'Jenkins_slave_01'}
     tools{
         maven 'maven-test'
     }
