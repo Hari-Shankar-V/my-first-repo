@@ -4,17 +4,17 @@ pipeline{
         maven 'maven-test'
     }
     stages{
-        stage("checkout scm"){
+        stage ('checkout scm'){
             steps{
                 checkout scm
             }
         }
-        stage('maven-build'){
+        stage ('maven-build'){
             steps{
                 sh 'mvn clean install'
             }
         }
-        stages('deploy tomcat'){
+        stages ('deploy tomcat'){
             steps{
                 sshagent(['first_slave']) {
                     sh 'scp -o StrictHostKeyChecking=no target/sample.war ec2-user@13.201.2.145:/opt/tomcat9/webapps'
