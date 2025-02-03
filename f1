@@ -14,7 +14,7 @@ pipeline{
                 sh 'mvn clean install'
             }
         }
-        stages ('deploy tomcat'){
+        stage ('deploy tomcat'){
             steps{
                 sshagent(['first_slave']) {
                     sh 'scp -o StrictHostKeyChecking=no target/sample.war ec2-user@13.201.2.145:/opt/tomcat9/webapps'
