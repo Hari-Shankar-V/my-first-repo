@@ -1,2 +1,28 @@
-Hello making changes for new PR from local repo
-making acange again in remote repo 11
+pipeline {
+    agent { label 'Jenkins_slave_new'}
+    tools {
+        maven 'maven-test'
+    }
+    stages{
+        stage ('checkout scm') {
+            steps {
+                checkout scm
+            }
+        }
+        stage ('maven build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+        stage ('deploy tomcat') {
+            steps {
+                sshagent(['first_slave']) {
+                sh 'scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@13.201.2.145:/opt/tomcat9/webapps'
+                }
+            
+            }
+        }
+
+    
+    }
+}
